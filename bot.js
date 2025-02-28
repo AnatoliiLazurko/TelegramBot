@@ -5,9 +5,7 @@ const mongoose = require("mongoose");
 
 // HANDLERS INITIALIZATION
 const startHandler = require("./handlers/start");
-const registrationHandler = require("./handlers/registration");
-const loginHandler = require("./handlers/login");
-const supportHandler = require("./handlers/support");
+const botHandlers = require("./handlers/botHandlers");
 // =======================
 
 
@@ -20,9 +18,7 @@ const bot = new Telegraf(process.env.BOT_TOKEN);
 
 // HANDLERS ACTIONS
 startHandler(bot);
-registrationHandler(bot);
-loginHandler(bot);
-supportHandler(bot);
+botHandlers(bot);
 
 // ======================
 
