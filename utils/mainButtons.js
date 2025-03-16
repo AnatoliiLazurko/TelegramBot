@@ -7,7 +7,7 @@ module.exports.mainKeyboard = () => {
                     { text: "Увійти", callback_data: "login" }
                 ],
                 [
-                    { text: "Інформація про проект", callback_data: "infoAboutProject" },
+                    { text: "Інформація про проєкт", callback_data: "aboutProject" },
                     { text: "Про систему кешбеку", callback_data: "aboutCashback" }
                 ],
                 [

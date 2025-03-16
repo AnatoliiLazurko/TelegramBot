@@ -1,6 +1,7 @@
 const { loginKeyboard } = require("../utils/loginButtons");
 const { loginUser } = require('../services/userService');
 const { loginSessions } = require('../utils/sessionStore');
+const { userMenuAction } = require('../handlers/userMenu');
 
 async function loginAction(ctx) {
     await ctx.answerCbQuery();
@@ -26,7 +27,9 @@ async function handleLogin(ctx) {
     } else if (session.step === 'password') {
         try {
             const user = await loginUser(session.username, ctx.message.text);
-            ctx.reply("✅ Вхід успішний! Ласкаво просимо, " + user.username + "!");
+            // ctx.reply("✅ Вхід успішний! Ласкаво просимо, " + user.username + "!");
+            await userMenuAction(ctx, user);
+
         } catch (error) {
             ctx.reply("❌ Помилка: " + error.message);
         }
