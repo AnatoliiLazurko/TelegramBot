@@ -1,6 +1,6 @@
 const { loginAction, handleLogin } = require('../handlers/login');
 const { registerAction, handleRegister } = require('../handlers/registration');
-const { supportAction } = require('../handlers/support');
+const { supportAction, handleSupport } = require('../handlers/support');
 const { aboutProjectAction } = require('../handlers/aboutProject');
 const { aboutcashbackAction } = require('../handlers/aboutCashback');
 
@@ -41,10 +41,10 @@ module.exports = (bot) => {
                 await handleLogin(ctx);
                 break;
             case 'support':
-                console.log(ctx.message.text);
+                await handleSupport(ctx);
                 break;
             default:
-                console.loh('error');
+                console.log('error');
         }
     });
 };

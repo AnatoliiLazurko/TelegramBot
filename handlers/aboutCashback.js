@@ -1,9 +1,11 @@
 const { aboutCashbackKeyboard } = require("../utils/aboutCashbackButtons");
+const { addMessage, deleteAllMessages } = require('../utils/messageStore');
 
 async function aboutcashbackAction(ctx) {
     await ctx.answerCbQuery();
     await ctx.deleteMessage();
-    await ctx.reply(
+    await deleteAllMessages(ctx);
+    const msg = await ctx.reply(
         "📢 Дізнайся більше про систему кешбеку в Sphinx!" +
         "\n\nSphinx — це не просто преміум-канал із цінною інформацією, а ще й можливість компенсувати витрати на підписку завдяки реферальній програмі." +
         "\n\n🔄 Як це працює?" +
@@ -20,6 +22,7 @@ async function aboutcashbackAction(ctx) {
         aboutCashbackKeyboard()
     );
 
+    addMessage(ctx.from.id, msg.message_id);
 }
 
 module.exports = { aboutcashbackAction };
